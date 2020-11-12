@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql8-idc-diagnostico
+  labels:
+     app: db-diagnostico
+spec:
+  type: NodePort
+  ports:
+  - port: 3306
+    nodePort: 30037
+    protocol: TCP
+  selector:
+     app: db-diagnostico

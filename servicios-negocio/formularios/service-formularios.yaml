@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: idc-servicio-formularios
+  labels:
+     app: formularios
+spec:
+  ports:
+  - port: 8504
+    targetPort: 8504
+    protocol: TCP
+  selector:
+     app: formularios

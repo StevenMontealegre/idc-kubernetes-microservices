@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: idc-servicio-diagnostico
+  labels:
+     app: diagnostico
+spec:
+  ports:
+  - port: 8506
+    targetPort: 8506
+    protocol: TCP
+  selector:
+     app: diagnostico

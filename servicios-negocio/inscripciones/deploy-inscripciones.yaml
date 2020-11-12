@@ -23,7 +23,7 @@ spec:
           - containerPort: 8502
         env:
           - name: SPRING_PROFILES_ACTIVE
-            value: k8s
+            value: k8s-dev
           - name: SERVER_PORT
             value: "8502"
       imagePullSecrets:
