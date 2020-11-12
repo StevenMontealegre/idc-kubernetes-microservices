@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pgsql-idc-notificaciones
+  labels:
+     app: db-notificaciones
+spec:
+  type: NodePort
+  ports:
+  - port: 5432
+    nodePort: 30033
+    protocol: TCP
+  selector:
+     app: db-notificaciones

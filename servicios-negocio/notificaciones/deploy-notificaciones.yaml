@@ -1,0 +1,30 @@
+apiVersion: apps/v1 # i se Usa apps/v1beta2 para versiones anteriores a 1.9.0
+kind: Deployment
+metadata:
+  name: idc-servicio-notificaciones
+  labels:
+    estado: "1"
+spec:
+  selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
+    matchLabels:
+      app: notificaciones
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:   # Plantilla que define el container
+    metadata:
+      labels:
+        app: notificaciones
+    spec:
+      containers:
+      - name: idc-servicio-notificaciones
+        image: dmcontainerregister.azurecr.io/idc-servicio-notificaciones-dev:latest
+        ports:
+          - containerPort: 8503
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: k8s-dev
+          - name: SERVER_PORT
+            value: "8503"
+      imagePullSecrets:
+        - name: regcred
