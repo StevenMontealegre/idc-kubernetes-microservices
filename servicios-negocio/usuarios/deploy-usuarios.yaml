@@ -1,0 +1,30 @@
+apiVersion: apps/v1 # i se Usa apps/v1beta2 para versiones anteriores a 1.9.0
+kind: Deployment
+metadata:
+  name: idc-servicio-usuarios
+  labels:
+    estado: "1"
+spec:
+  selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
+    matchLabels:
+      app: usuarios
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:   # Plantilla que define el container
+    metadata:
+      labels:
+        app: usuarios
+    spec:
+      containers:
+      - name: idc-servicio-usuarios
+        image: dmcontainerregister.azurecr.io/idc-servicio-usuarios-dev:latest
+        ports:
+          - containerPort: 8501
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: k8s
+          - name: SERVER_PORT
+            value: "8501"
+      imagePullSecrets:
+        - name: regcred
