@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql8-idc-auditoria
+  labels:
+    app: db-auditoria
+    type: db
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: db-auditoria
+      type: db
+  template:
+    metadata:
+      labels:
+        app: db-auditoria
+        type: db
+    spec:
+      containers:
+        - name: mysql8-idc-auditoria
+          image: mysql:8
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_DATABASE
+              value: db_idc_auditoria
+            - name: MYSQL_ROOT_PASSWORD
+              value: Carvajal2019*
