@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql8-idc-rango
+  labels:
+     app: db-rango
+spec:
+  type: NodePort
+  ports:
+  - port: 3306
+    nodePort: 30048
+    protocol: TCP
+  selector:
+     app: db-rango

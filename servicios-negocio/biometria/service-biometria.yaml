@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: idc-servicio-biometria
+  labels:
+     app: biometria
+spec:
+  ports:
+  - port: 8520
+    targetPort: 8520
+    protocol: TCP
+  selector:
+     app: biometria

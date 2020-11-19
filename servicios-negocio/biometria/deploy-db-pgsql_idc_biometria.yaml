@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgsql12-idc-biometria
+  labels:
+    app: db-biometria
+    type: db
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: db-biometria
+      type: db
+  template:
+    metadata:
+      labels:
+        app: db-biometria
+        type: db
+    spec:
+      containers:
+        - name: pgsql12-idc-biometria
+          image: postgres:latest
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: db_idc_biometria
+            - name: POSTGRES_PASSWORD
+              value: Carvajal2019*
+      nodeSelector:
+        nodo: master
