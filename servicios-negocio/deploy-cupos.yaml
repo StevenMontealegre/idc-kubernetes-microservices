@@ -1,31 +1,31 @@
 apiVersion: apps/v1 # i se Usa apps/v1beta2 para versiones anteriores a 1.9.0
 kind: Deployment
 metadata:
-  name: idc-servicio-divipol
+  name: idc-servicio-cupos
   labels:
-    name: "idc-servicio-divipol"
+    name: "idc-servicio-cupos"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
     matchLabels:
-      app: divipol
+      app: cupos
   replicas: 1
   strategy:
     type: RollingUpdate
   template:   # Plantilla que define el container
     metadata:
       labels:
-        app: divipol
+        app: cupos
     spec:
       containers:
-      - name: idc-servicio-divipol
-        image: dmcontainerregister.azurecr.io/idc-servicio-divipol-dev:latest
+      - name: idc-servicio-cupos
+        image: dmcontainerregister.azurecr.io/idc-servicio-cupos-dev:latest
         ports:
-          - containerPort: 8508
+          - containerPort: 8500
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: k8s-dev
           - name: SERVER_PORT
-            value: "8508"
+            value: "8500"
       imagePullSecrets:
         - name: regcred
       nodeSelector:

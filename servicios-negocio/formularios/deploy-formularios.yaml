@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: idc-servicio-formularios
   labels:
-    estado: "1"
+    name: "idc-servicio-formularios"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
     matchLabels:
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: idc-servicio-formularios
-        image: dmcontainerregister.azurecr.io/idc-servicio-formularios:latest
+        image: dmcontainerregister.azurecr.io/idc-servicio-formulario-dev:latest
         ports:
           - containerPort: 8504
         env:
@@ -28,3 +28,5 @@ spec:
             value: "8504"
       imagePullSecrets:
         - name: regcred
+      nodeSelector:
+        nodo: master

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql8-idc-parametros
+  labels:
+    app: db-parametros
+    type: db
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: db-parametros
+      type: db
+  template:
+    metadata:
+      labels:
+        app: db-parametros
+        type: db
+    spec:
+      containers:
+        - name: mysql8-idc-parametros
+          image: mysql:8
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_DATABASE
+              value: db_idc_parametros
+            - name: MYSQL_ROOT_PASSWORD
+              value: Carvajal2019*
+      nodeSelector:
+        nodo: master

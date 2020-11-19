@@ -1,31 +1,31 @@
 apiVersion: apps/v1 # i se Usa apps/v1beta2 para versiones anteriores a 1.9.0
 kind: Deployment
 metadata:
-  name: idc-servicio-divipol
+  name: idc-servicio-parametros
   labels:
-    name: "idc-servicio-divipol"
+    estado: "1"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
     matchLabels:
-      app: divipol
+      app: parametros
   replicas: 1
   strategy:
     type: RollingUpdate
   template:   # Plantilla que define el container
     metadata:
       labels:
-        app: divipol
+        app: parametros
     spec:
       containers:
-      - name: idc-servicio-divipol
-        image: dmcontainerregister.azurecr.io/idc-servicio-divipol-dev:latest
+      - name: idc-servicio-parametros
+        image: dmcontainerregister.azurecr.io/idc-servicio-parametros-dev:latest
         ports:
-          - containerPort: 8508
+          - containerPort: 8515
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: k8s-dev
           - name: SERVER_PORT
-            value: "8508"
+            value: "8515"
       imagePullSecrets:
         - name: regcred
       nodeSelector:

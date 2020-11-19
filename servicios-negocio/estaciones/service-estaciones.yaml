@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: idc-servicio-estaciones
+  labels:
+     app: estaciones
+spec:
+  ports:
+  - port: 8513
+    targetPort: 8513
+    protocol: TCP
+  selector:
+     app: estaciones

@@ -3,24 +3,25 @@ kind: Deployment
 metadata:
   name: idc-eureka-server
   labels:
-    estado: "1"
+    rol: "discovery-service"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
-    matchLabels:  
+    matchLabels:
       app: eureka
+      project: register   
   replicas: 1 # indica al controlador que ejecute 2 pods
   template:   # Plantilla que define los containers
     metadata:
       labels:
         app: eureka
+        project: register
     spec:
       containers:
       - name: idc-eureka-server
-        image: dmcontainerregister.azurecr.io/idc-eureka-server
+        image: dmcontainerregister.azurecr.io/idc-eureka-server:latest
         ports:
         - containerPort: 8761
-        env:
-          - name: SPRING_PROFILES_ACTIVE
-            value: msdev
       imagePullSecrets:
         - name: regcred
+      nodeSelector:
+        nodo: master

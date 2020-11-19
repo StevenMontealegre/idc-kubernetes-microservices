@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgsql12-alpine-idc-censo
+  labels:
+    app: db-censo
+    type: db
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: db-censo
+      type: db
+  template:
+    metadata:
+      labels:
+        app: db-censo
+        type: db
+    spec:
+      containers:
+        - name: pgsql12-alpine-idc-censo
+          image: postgres:latest
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: db_idc_censo
+            - name: POSTGRES_PASSWORD
+              value: Carvajal2019*

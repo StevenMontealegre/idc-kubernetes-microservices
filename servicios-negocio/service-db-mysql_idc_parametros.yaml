@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql8-idc-parametros
+  labels:
+     app: db-parametros
+spec:
+  type: NodePort
+  ports:
+  - port: 3306
+    nodePort: 30045
+    protocol: TCP
+  selector:
+     app: db-parametros
