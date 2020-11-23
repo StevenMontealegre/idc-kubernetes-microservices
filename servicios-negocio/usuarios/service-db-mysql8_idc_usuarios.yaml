@@ -4,6 +4,7 @@ metadata:
   name: mysql8-idc-usuarios
   labels:
      app: db-usuarios
+     link: enlace-usuarios
 spec:
   type: NodePort
   ports:
@@ -12,3 +13,4 @@ spec:
     protocol: TCP
   selector:
      app: db-usuarios
+     link: enlace-usuarios

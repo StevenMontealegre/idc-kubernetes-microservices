@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: idc-servicio-importacion
+  labels:
+     app: importacion
+spec:
+  ports:
+  - port: 8521
+    targetPort: 8521
+    protocol: TCP
+  selector:
+     app: importacion

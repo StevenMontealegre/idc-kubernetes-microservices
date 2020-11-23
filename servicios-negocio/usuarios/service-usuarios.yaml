@@ -4,10 +4,15 @@ metadata:
   name: idc-servicio-usuarios
   labels:
      app: usuarios
+     project: register
+     link: enlace-usuarios
 spec:
   ports:
-  - port: 8501
-    targetPort: 8501
+  - name: internal
     protocol: TCP
+    port: 8501
+    targetPort: 8501
   selector:
      app: usuarios
+     project: register
+     link: enlace-usuarios

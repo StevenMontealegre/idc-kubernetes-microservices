@@ -5,17 +5,20 @@ metadata:
   labels:
     app: db-usuarios
     type: db
+    link: enlace-usuarios
 spec:
   replicas: 1
   selector: 
     matchLabels:
       app: db-usuarios
       type: db
+      link: enlace-usuarios
   template:
     metadata:
       labels:
         app: db-usuarios
         type: db
+        link: enlace-usuarios
     spec:
       containers:
         - name: mysql8-idc-usuarios
@@ -27,3 +30,5 @@ spec:
               value: db_idc_usuarios
             - name: MYSQL_ROOT_PASSWORD
               value: Carvajal2019*
+      nodeSelector:
+        nodo: master

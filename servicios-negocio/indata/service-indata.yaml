@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: idc-servicio-indata
+  labels:
+     app: indata
+spec:
+  ports:
+  - port: 8529
+    targetPort: 8529
+    protocol: TCP
+  selector:
+     app: indata

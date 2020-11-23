@@ -1,39 +1,30 @@
 apiVersion: apps/v1 # i se Usa apps/v1beta2 para versiones anteriores a 1.9.0
 kind: Deployment
 metadata:
-  name: idc-servicio-formularios
+  name: idc-servicio-indata
   labels:
-    name: "idc-servicio-formularios"
+    name: "servicio-indata"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
     matchLabels:
-      app: formularios
+      app: indata
   replicas: 1
   strategy:
     type: RollingUpdate
   template:   # Plantilla que define el container
     metadata:
       labels:
-        app: formularios
+        app: indata
     spec:
       containers:
-      - name: idc-servicio-formularios
-        image: dmcontainerregister.azurecr.io/idc-servicio-formularios:4463
-        volumeMounts:
-        - mountPath: /imagenes-e3
-          name: imagenes-e3
+      - name: idc-servicio-indata
+        image: dmcontainerregister.azurecr.io/idc-servicio-indata-dev:latest
         ports:
-          - containerPort: 8522
+          - containerPort: 8529
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: k8s-dev
-          - name: SERVER_PORT
-            value: "8522"
       imagePullSecrets:
         - name: regcred
       nodeSelector:
         nodo: master
-      volumes:
-      - name: imagenes-e3
-        hostPath:
-          path: /mnt/imagenes-e3

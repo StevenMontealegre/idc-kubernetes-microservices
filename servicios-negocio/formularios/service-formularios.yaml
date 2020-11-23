@@ -6,8 +6,8 @@ metadata:
      app: formularios
 spec:
   ports:
-  - port: 8504
-    targetPort: 8504
+  - port: 8522
+    targetPort: 8522
     protocol: TCP
   selector:
      app: formularios

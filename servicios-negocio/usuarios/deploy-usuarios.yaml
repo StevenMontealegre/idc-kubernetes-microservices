@@ -1,23 +1,27 @@
 apiVersion: apps/v1 # i se Usa apps/v1beta2 para versiones anteriores a 1.9.0
 kind: Deployment
 metadata:
-  name: idc-servicio-usuarios
+  name: idc-servicio-usuarios2
   labels:
-    name: "idc-servicio-usuarios"
+    name: "idc-servicio-usuarios2"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
     matchLabels:
-      app: usuarios
+      app: usuarios2
+      project: register
+      link: enlace-usuarios2
   replicas: 1
   strategy:
     type: RollingUpdate
   template:   # Plantilla que define el container
     metadata:
       labels:
-        app: usuarios
+        app: usuarios2
+        project: register
+        link: enlace-usuarios2
     spec:
       containers:
-      - name: idc-servicio-usuarios
+      - name: idc-servicio-usuarios2
         image: dmcontainerregister.azurecr.io/idc-servicio-usuarios-dev:latest
         ports:
           - containerPort: 8501
@@ -29,4 +33,4 @@ spec:
       imagePullSecrets:
         - name: regcred
       nodeSelector:
-        nodo: master
+        nodo: worker1
