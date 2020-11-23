@@ -1,30 +1,39 @@
 apiVersion: apps/v1 # i se Usa apps/v1beta2 para versiones anteriores a 1.9.0
 kind: Deployment
 metadata:
-  name: idc-servicio-usuarios
+  name: idc-servicio-updater
   labels:
-    estado: "1"
+    name: "idc-servicio-updater"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
     matchLabels:
-      app: usuarios
+      app: updater
   replicas: 1
   strategy:
     type: RollingUpdate
   template:   # Plantilla que define el container
     metadata:
       labels:
-        app: usuarios
+        app: updater
     spec:
       containers:
-      - name: idc-servicio-usuarios
-        image: dmcontainerregister.azurecr.io/idc-servicio-usuarios-dev:latest
+      - name: idc-servicio-updater
+        image: dmcontainerregister.azurecr.io/idc-servicio-updater-dev:latest
+        volumeMounts:
+        - mountPath: /idcupdater
+          name: idcupdater
         ports:
-          - containerPort: 8501
+          - containerPort: 8531
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: k8s-dev
           - name: SERVER_PORT
-            value: "8501"
+            value: "8531"
       imagePullSecrets:
         - name: regcred
+      nodeSelector:
+        nodo: master
+      volumes:
+      - name: idcupdater
+        hostPath:
+          path: /mnt/idcupdater
