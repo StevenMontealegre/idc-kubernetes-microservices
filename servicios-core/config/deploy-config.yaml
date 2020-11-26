@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: idc-config-server
   labels:
-    estado: "1"
+    name: "config-server"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
     matchLabels:  
@@ -21,3 +21,5 @@ spec:
         - containerPort: 8888
       imagePullSecrets:
         - name: regcred
+      nodeSelector:
+        nodo: master

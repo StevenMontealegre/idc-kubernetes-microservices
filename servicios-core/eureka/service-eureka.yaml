@@ -4,6 +4,7 @@ metadata:
   name: idc-eureka-server
   labels:
      app: eureka
+     project: register
 spec:
   type: NodePort
   ports:
@@ -12,3 +13,4 @@ spec:
     protocol: TCP
   selector:
      app: eureka
+     project: register
