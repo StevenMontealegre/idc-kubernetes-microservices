@@ -1,31 +1,31 @@
 apiVersion: apps/v1 # i se Usa apps/v1beta2 para versiones anteriores a 1.9.0
 kind: Deployment
 metadata:
-  name: idc-servicio-rango
+  name: idc-servicio-log
   labels:
-    name: "idc-servicio-rango"
+    name: "servicio-log"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
     matchLabels:
-      app: rango
+      app: log
   replicas: 1
   strategy:
     type: RollingUpdate
   template:   # Plantilla que define el container
     metadata:
       labels:
-        app: rango
+        app: log
     spec:
       containers:
-      - name: idc-servicio-rango
-        image: dmcontainerregister.azurecr.io/idc-servicio-rango-dev:1.0.0.24
+      - name: idc-servicio-log
+        image: dmcontainerregister.azurecr.io/idc-servicio-log-dev:latest
         ports:
-          - containerPort: 8517
+          - containerPort: 8565
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: k8s-dev
           - name: SERVER_PORT
-            value: "8517"
+            value: "8565"
       imagePullSecrets:
         - name: regcred
       nodeSelector:

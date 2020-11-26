@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: idc-servicio-autorizacion
   labels:
-    estado: "1"
+    estado: "servicio-autorizacion"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
     matchLabels:
@@ -28,3 +28,5 @@ spec:
             value: "8511"
       imagePullSecrets:
         - name: regcred
+      nodeSelector:
+        nodo: master

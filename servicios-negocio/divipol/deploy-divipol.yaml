@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: idc-servicio-divipol
-        image: dmcontainerregister.azurecr.io/idc-servicio-divipol-dev:latest
+        image: dmcontainerregister.azurecr.io/idc-servicio-divipol-dev:1.0.0.36
         ports:
           - containerPort: 8508
         env:

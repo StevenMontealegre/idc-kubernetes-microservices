@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: idc-servicio-solicitud
   labels:
-    estado: "1"
+    name: "servicio-solicitud"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
     matchLabels:
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: idc-servicio-solicitud
-        image: dmcontainerregister.azurecr.io/idc-servicio-solicitud-dev:latest
+        image: dmcontainerregister.azurecr.io/idc-servicio-solicitud-dev:1.0.0.72
         ports:
           - containerPort: 8505
         env:
@@ -28,3 +28,5 @@ spec:
             value: "8505"
       imagePullSecrets:
         - name: regcred
+      nodeSelector:
+        nodo: master

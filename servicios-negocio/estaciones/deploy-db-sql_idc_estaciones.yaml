@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sqlserver-idc-estaciones
+  labels:
+    app: db-estaciones
+    type: db
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: db-estaciones
+      type: db
+  template:
+    metadata:
+      labels:
+        app: db-estaciones
+        type: db
+    spec:
+      containers:
+        - name: sqlserver-idc-estaciones
+          image: mcr.microsoft.com/mssql/server:2017-CU8-ubuntu
+          ports:
+            - containerPort: 1433
+          env:
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: SA_PASSWORD
+              value: Carvajal2019*
+      nodeSelector:
+        nodo: master

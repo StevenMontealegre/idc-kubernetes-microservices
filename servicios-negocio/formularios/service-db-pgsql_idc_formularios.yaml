@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: pgsql11-idc-divipol
+  name: pgsql-idc-formularios
   labels:
-     app: db-divipol
+     app: db-formularios
 spec:
   type: NodePort
   ports:
   - port: 5432
-    nodePort: 30038
+    nodePort: 30047
     protocol: TCP
   selector:
-     app: db-divipol
+     app: db-formularios

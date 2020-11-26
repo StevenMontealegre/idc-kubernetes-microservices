@@ -27,3 +27,6 @@ spec:
               value: db_idc_autorizaciones
             - name: MYSQL_ROOT_PASSWORD
               value: Carvajal2019*
+      nodeSelector:
+        nodo: master
+

@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: idc-servicio-censo
   labels:
-    estado: "1"
+    name: "servicio-censo"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
     matchLabels:
@@ -28,3 +28,5 @@ spec:
             value: "8512"
       imagePullSecrets:
         - name: regcred
+      nodeSelector:
+        nodo: master

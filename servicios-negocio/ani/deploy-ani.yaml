@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: idc-servicio-ani
   labels:
-    estado: "1"
+    name: "servicio-ani"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
     matchLabels:
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: idc-servicio-ani
-        image: dmcontainerregister.azurecr.io/idc-servicio-ani-dev:latest
+        image: dmcontainerregister.azurecr.io/idc-servicio-ani-dev:1.0.0.27
         ports:
           - containerPort: 8509
         env:
@@ -28,3 +28,5 @@ spec:
             value: "8509"
       imagePullSecrets:
         - name: regcred
+      nodeSelector:
+        nodo: master

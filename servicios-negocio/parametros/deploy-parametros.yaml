@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: idc-servicio-parametros
   labels:
-    estado: "1"
+    name: "servicio-parametros"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
     matchLabels:
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: idc-servicio-parametros
-        image: dmcontainerregister.azurecr.io/idc-servicio-parametros-dev:latest
+        image: dmcontainerregister.azurecr.io/idc-servicio-parametros-dev:1.0.0.37
         ports:
           - containerPort: 8515
         env:

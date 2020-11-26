@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: idc-servicio-reportes
+  labels:
+     app: reportes
+spec:
+  ports:
+  - port: 8532
+    targetPort: 8532
+    protocol: TCP
+  selector:
+     app: reportes

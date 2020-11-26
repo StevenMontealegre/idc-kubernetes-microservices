@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: idc-servicio-diagnostico
   labels:
-    estado: "1"
+    name: "servicio-diagnostico"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
     matchLabels:
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: idc-servicio-diagnostico
-        image: dmcontainerregister.azurecr.io/idc-servicio-diagnostico-dev:latest
+        image: dmcontainerregister.azurecr.io/idc-servicio-diagnostico-dev-local:1.0.0.1
         ports:
           - containerPort: 8506
         env:
@@ -28,3 +28,5 @@ spec:
             value: "8506"
       imagePullSecrets:
         - name: regcred
+      nodeSelector:
+        nodo: master

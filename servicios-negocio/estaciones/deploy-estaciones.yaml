@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: idc-servicio-estaciones
   labels:
-    app: "servicios-negocio"
+    name: "servicio-estaciones"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
     matchLabels:
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: idc-servicio-estaciones
-        image: dmcontainerregister.azurecr.io/idc-servicio-estaciones-dev:latest
+        image: dmcontainerregister.azurecr.io/idc-servicio-estaciones-dev-local:1.0.0.1
         ports:
           - containerPort: 8513
         env:
