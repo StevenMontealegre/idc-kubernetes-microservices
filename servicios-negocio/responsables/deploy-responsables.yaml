@@ -18,9 +18,9 @@ spec:
     spec:
       containers:
       - name: idc-servicio-responsables
-        image: dmcontainerregister.azurecr.io/idc-servicio-responsables-dev:latest
+        image: dmcontainerregister.azurecr.io/idc-servicio-responsables-dev:1.0.0.10
         ports:
-          - containerPort: 8500
+                - containerPort: 8500
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: k8s-dev

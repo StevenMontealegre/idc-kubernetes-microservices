@@ -1,26 +1,29 @@
 apiVersion: apps/v1 # i se Usa apps/v1beta2 para versiones anteriores a 1.9.0
 kind: Deployment
 metadata:
-  name: idc-servicio-oauth
+  name: idc-servicio-util
   labels:
-    name: "servicio-autenticacion"
+    name: "servicio-util"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
     matchLabels:
-      app: oauth
+      app: util
   replicas: 1
   strategy:
     type: RollingUpdate
   template:   # Plantilla que define el container
     metadata:
       labels:
-        app: oauth
+        app: util
     spec:
       containers:
-      - name: idc-servicio-oauth
-        image: dmcontainerregister.azurecr.io/idc-servicio-oauth:1.0.0.0
+      - name: idc-servicio-util
+        image: dmcontainerregister.azurecr.io/idc-servicio-util-dev:latest
         ports:
-          - containerPort: 9100
+          - containerPort: 8568
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: k8s-dev
       imagePullSecrets:
         - name: regcred
       nodeSelector:
