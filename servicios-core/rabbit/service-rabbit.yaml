@@ -6,6 +6,7 @@ metadata:
      app: rabbit
      project: broker
 spec:
+  type: NodePort
   ports:
   - name: port1
     port: 5672
@@ -29,8 +30,8 @@ spec:
     targetPort: 25672
   - name: port6
     port: 15672
+    nodePort: 31000
     protocol: TCP
-    targetPort: 15672
   selector:
      app: rabbit
      project: broker
