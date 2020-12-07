@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: idc-servicio-autorizacion
-        image: dmcontainerregister.azurecr.io/idc-servicio-autorizacion-dev:latest
+        image: dmcontainerregister.azurecr.io/idc-servicio-autorizacion-dev:1.0.0.22
         ports:
           - containerPort: 8511
         env:

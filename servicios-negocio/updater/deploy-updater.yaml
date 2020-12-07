@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: idc-servicio-updater
-        image: dmcontainerregister.azurecr.io/idc-servicio-updater-dev:latest
+        image: dmcontainerregister.azurecr.io/idc-servicio-updater-dev:1.0.0.1
         volumeMounts:
         - mountPath: /idcupdater
           name: idcupdater

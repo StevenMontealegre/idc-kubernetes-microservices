@@ -18,12 +18,12 @@ spec:
     spec:
       containers:
       - name: idc-servicio-notificaciones
-        image: dmcontainerregister.azurecr.io/idc-servicio-notificaciones-dev:latest
+        image: dmcontainerregister.azurecr.io/idc-servicio-notificaciones-dev:1.0.0.27
         ports:
           - containerPort: 8503
         env:
           - name: SPRING_PROFILES_ACTIVE
-            value: k8s-dev
+            value: qa
           - name: SERVER_PORT
             value: "8503"
       imagePullSecrets:

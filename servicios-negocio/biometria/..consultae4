@@ -1,29 +1,31 @@
 apiVersion: apps/v1 # i se Usa apps/v1beta2 para versiones anteriores a 1.9.0
 kind: Deployment
 metadata:
-  name: idc-servicio-util
+  name: idc-servicio-biometria
   labels:
-    name: "servicio-util"
+    name: "idc-servicio-biometria"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
     matchLabels:
-      app: util
+      app: biometria
   replicas: 1
   strategy:
     type: RollingUpdate
   template:   # Plantilla que define el container
     metadata:
       labels:
-        app: util
+        app: biometria
     spec:
       containers:
-      - name: idc-servicio-util
-        image: dmcontainerregister.azurecr.io/idc-servicio-util-dev:latest
+      - name: idc-servicio-biometria
+        image: dmcontainerregister.azurecr.io/idc-servicio-biometria-dev:1.0.0.1
         ports:
-          - containerPort: 8568
+                - containerPort: 80
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: k8s-dev
+          - name: SERVER_PORT
+            value: "8520"
       imagePullSecrets:
         - name: regcred
       nodeSelector:

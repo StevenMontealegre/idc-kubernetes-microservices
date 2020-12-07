@@ -1,31 +1,31 @@
 apiVersion: apps/v1 # i se Usa apps/v1beta2 para versiones anteriores a 1.9.0
 kind: Deployment
 metadata:
-  name: idc-servicio-divipol
+  name: idc-servicio-consultae4
   labels:
-    name: "idc-servicio-divipol"
+    name: "idc-servicio-consultae4"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
     matchLabels:
-      app: divipol
+      app: consultae4
   replicas: 1
   strategy:
     type: RollingUpdate
   template:   # Plantilla que define el container
     metadata:
       labels:
-        app: divipol
+        app: consultae4
     spec:
       containers:
-      - name: idc-servicio-divipol
-        image: dmcontainerregister.azurecr.io/idc-servicio-divipol-dev:1.0.0.37
+      - name: idc-servicio-consultae4
+        image: dmcontainerregister.azurecr.io/idc_servicio_consultae4:latest
         ports:
-          - containerPort: 8508
+          - containerPort: 80
         env:
-          - name: SPRING_PROFILES_ACTIVE
-            value: k8s-dev
+          - name: ASPNETCORE_ENVIRONMENT
+            value: k8sDev
           - name: SERVER_PORT
-            value: "8508"
+            value: "8570"
       imagePullSecrets:
         - name: regcred
       nodeSelector:

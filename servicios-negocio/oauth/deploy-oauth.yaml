@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: idc-servicio-oauth
-        image: dmcontainerregister.azurecr.io/idc-servicio-oauth:1.0.0.0
+        image: dmcontainerregister.azurecr.io/idc-servicio-oauth:1.0.0.1
         ports:
           - containerPort: 9100
       imagePullSecrets:

@@ -6,8 +6,8 @@ metadata:
      app: biometria
 spec:
   ports:
-  - port: 8520
+  - port: 80
     targetPort: 8520
     protocol: TCP
   selector:
-     app: biometria
+          app: biometria

@@ -18,12 +18,12 @@ spec:
     spec:
       containers:
       - name: idc-servicio-solicitud
-        image: dmcontainerregister.azurecr.io/idc-servicio-solicitud-dev:1.0.0.72
+        image: dmcontainerregister.azurecr.io/idc-servicio-solicitud-dev:1.0.0.75
         ports:
           - containerPort: 8505
         env:
           - name: SPRING_PROFILES_ACTIVE
-            value: k8s-dev
+            value: qa
           - name: SERVER_PORT
             value: "8505"
       imagePullSecrets:

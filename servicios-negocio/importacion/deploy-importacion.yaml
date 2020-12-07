@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: idc-servicio-importacion
-        image: dmcontainerregister.azurecr.io/idc-servicio-importacion-dev:1.0.0.13
+        image: dmcontainerregister.azurecr.io/idc-servicio-importacion-dev:1.0.0.15
         volumeMounts:
         - mountPath: /idcimportacion
           name: idcimportacion

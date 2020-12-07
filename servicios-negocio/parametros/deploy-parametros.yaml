@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: idc-servicio-parametros
-        image: dmcontainerregister.azurecr.io/idc-servicio-parametros-dev:1.0.0.37
+        image: dmcontainerregister.azurecr.io/idc-servicio-parametros-dev:1.0.0.40
         ports:
           - containerPort: 8515
         env:

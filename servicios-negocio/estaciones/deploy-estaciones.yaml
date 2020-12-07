@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: idc-servicio-estaciones
-        image: dmcontainerregister.azurecr.io/idc-servicio-estaciones-dev-local:1.0.0.1
+        image: dmcontainerregister.azurecr.io/idc-servicio-estaciones-dev:1.0.0.42
         ports:
           - containerPort: 8513
         env:

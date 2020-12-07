@@ -1,36 +1,36 @@
-apiVersion: apps/v1 # i se Usa apps/v1beta2 para versiones anteriores a 1.9.0
+apiVersion: apps/v1 
 kind: Deployment
 metadata:
-  name: idc-servicio-cierre
+  name: idc-servicio-freeaprobacion
   labels:
-    name: "servicio-cierre"
+    name: "servicio-freeaprobacion"
 spec:
   selector:   #permite seleccionar un conjunto de objetos que cumplan las condicione
     matchLabels:
-      app: cierre
+      app: freeaprobacion
   replicas: 1
   strategy:
     type: RollingUpdate
   template:   # Plantilla que define el container
     metadata:
       labels:
-        app: cierre
+        app: freeaprobacion
     spec:
       containers:
-      - name: idc-servicio-cierre
-        image: dmcontainerregister.azurecr.io/idc-servicio-cierre-dev:1.0.0.8
+      - name: idc-servicio-freeaprobacion        
+        image: dmcontainerregister.azurecr.io/idc-servicio-freeaprobacion-dev:1.0.0.6
         volumeMounts:
         - mountPath: /etc/localtime
           name: localtime
         - mountPath: /etc/timezone
           name: timezone
         ports:
-          - containerPort: 8513
+          - containerPort: 8571
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: k8s-dev
           - name: SERVER_PORT
-            value: "8513"
+            value: "8571"
       imagePullSecrets:
         - name: regcred
       nodeSelector:
@@ -42,3 +42,4 @@ spec:
       - name: timezone
         hostPath:
           path: /etc/timezone
+

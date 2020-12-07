@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: idc-servicio-censo
-        image: dmcontainerregister.azurecr.io/idc-servicio-censo-dev:latest
+        image: dmcontainerregister.azurecr.io/idc-servicio-censo-dev:1.0.0.31
         ports:
           - containerPort: 8512
         env:

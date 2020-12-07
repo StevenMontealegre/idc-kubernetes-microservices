@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: idc-servicio-auditoria
-        image: dmcontainerregister.azurecr.io/idc-servicio-auditoria-dev-local:1.0.0.1
+        image: dmcontainerregister.azurecr.io/idc-servicio-auditoria-dev:1.0.0.42
         ports:
           - containerPort: 8510
         env:

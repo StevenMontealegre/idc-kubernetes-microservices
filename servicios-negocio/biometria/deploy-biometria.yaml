@@ -18,9 +18,9 @@ spec:
     spec:
       containers:
       - name: idc-servicio-biometria
-        image: dmcontainerregister.azurecr.io/idc-servicio-biometria-test:latest
+        image: dmcontainerregister.azurecr.io/idc-servicio-biometria-dev:1.0.0.2
         ports:
-          - containerPort: 8520
+                - containerPort: 80
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: k8s-dev

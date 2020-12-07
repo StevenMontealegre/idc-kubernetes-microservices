@@ -18,12 +18,12 @@ spec:
     spec:
       containers:
       - name: idc-servicio-indata
-        image: dmcontainerregister.azurecr.io/idc-servicio-indata-dev:latest
+        image: dmcontainerregister.azurecr.io/idc-servicio-indata-dev:1.0.0.67
         ports:
           - containerPort: 8529
         env:
           - name: SPRING_PROFILES_ACTIVE
-            value: k8s-dev
+            value: qa
       imagePullSecrets:
         - name: regcred
       nodeSelector:

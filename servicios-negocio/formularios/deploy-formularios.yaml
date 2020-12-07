@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: idc-servicio-formularios
-        image: dmcontainerregister.azurecr.io/idc-servicio-formularios:4463
+        image: dmcontainerregister.azurecr.io/idc-servicio-formularios-dev-local:1.0.0.7
         volumeMounts:
         - mountPath: /imagenes-e3
           name: imagenes-e3
@@ -26,7 +26,7 @@ spec:
           - containerPort: 8522
         env:
           - name: SPRING_PROFILES_ACTIVE
-            value: k8s-dev
+            value: qa
           - name: SERVER_PORT
             value: "8522"
       imagePullSecrets:

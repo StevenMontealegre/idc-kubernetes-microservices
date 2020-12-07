@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: idc-servicio-usuarios
-        image: dmcontainerregister.azurecr.io/idc-servicio-usuarios-dev-local:1.0.0.1
+        image: dmcontainerregister.azurecr.io/idc-servicio-usuarios-dev:1.0.0.53
         ports:
           - containerPort: 8501
         env:
@@ -33,4 +33,4 @@ spec:
       imagePullSecrets:
         - name: regcred
       nodeSelector:
-        nodo: master
+              nodo: master
